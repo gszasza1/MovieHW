@@ -1,0 +1,136 @@
+﻿<Page
+    x:Class="MovieHW.Views.MovieDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MovieHW.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:MovieHW.ViewModels"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:MovieDetailsPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <ScrollViewer >
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="900px"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*">
+
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="{Binding Movie.poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                <Grid Grid.Column="1" Background="#eff0f2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="{Binding Movie.title}"></TextBlock>
+                    <TextBlock Margin="20" Grid.Row="1" FontSize="20" Text="{Binding Movie.release_date}"></TextBlock>
+
+                    <StackPanel Grid.Row="2" Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,10,10" FontSize="20" Text="Overview:"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="20,10,10,10" FontSize="20" Text="{Binding Movie.overview}"></TextBlock>
+
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="16" Text="Popularity:"></TextBlock>
+                        <TextBlock Margin="20,5,0,0" FontSize="16" Text="{Binding Movie.popularity}"></TextBlock>
+
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="16" Text="Original language:"></TextBlock>
+                        <TextBlock Margin="20,5,0,0" FontSize="16" Text="{Binding Movie.original_language}"></TextBlock>
+
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="16" Text="Status:"></TextBlock>
+                        <TextBlock Margin="20,5,0,0" FontSize="16" Text="{Binding Movie.status}"></TextBlock>
+
+                    </StackPanel>
+                    <StackPanel Grid.Row="6" Orientation="Vertical">
+                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="16" Text="Revenue:"></TextBlock>
+                        <TextBlock Margin="20,5,0,0" FontSize="16" Text="{Binding Movie.revenue}"></TextBlock>
+
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.Resources>
+                    <CollectionViewSource x:Key="CastViewSource" Source="{Binding MovieCast}" />
+                    <CollectionViewSource x:Key="CrewViewSource" Source="{Binding MovieCrew}" />
+                </Grid.Resources>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*">
+
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="Cast:"></TextBlock>
+
+                    <GridView Padding="18" ItemsSource="{Binding Source={StaticResource CastViewSource}}" IsItemClickEnabled="True" ItemClick="Person_ItemClick">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="220" Height="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="240px"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="{Binding profile_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+
+                                    <Border Grid.Row="0" VerticalAlignment="Bottom" Background="#AA000000">
+                                        <TextBlock Margin="12" Foreground="White" Text="{Binding name}" />
+                                    </Border>
+                                    <Border Grid.Row="1" VerticalAlignment="Bottom" Background="#AA000000">
+                                        <TextBlock Margin="12" Foreground="White" Text="{Binding character}" />
+                                    </Border>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+
+                    </GridView>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical">
+                    <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="Crew:"></TextBlock>
+
+                    <GridView Padding="18" ItemsSource="{Binding Source={StaticResource CrewViewSource}}" IsItemClickEnabled="True" ItemClick="Person_ItemClick">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="220" Height="270">
+
+                                    <Image Source="{Binding profile_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+
+                                    <Border VerticalAlignment="Bottom" Background="#AA000000">
+                                        <TextBlock Margin="12" Foreground="White" Text="{Binding name}" />
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+
+                    </GridView>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
