@@ -5,57 +5,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
+using MovieHW.Models;
+using MovieHW.Services;
+using MovieHW.Views;
 
 namespace MovieHW.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public MainPageViewModel()
+        public ObservableCollection<GetMovieFromList> MovieList { get; set; } =
+           new ObservableCollection<GetMovieFromList>();
+
+
+        public override async Task OnNavigatedToAsync(
+         object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            var service = new MovieService();
+            var movieGroups = await service.GetTopratedMoviesAsync();
+            foreach (var item in movieGroups.results)
             {
-                Value = "Designtime value";
+                MovieList.Add(item);
             }
+
+            await base.OnNavigatedToAsync(parameter, mode, state);
         }
 
-        string _Value = "Gas";
-        public string Value { get { return _Value; } set { Set(ref _Value, value); } }
-
-        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
+        public void NavigateToDetails(int movieID)
         {
-            if (suspensionState.Any())
-            {
-                Value = suspensionState[nameof(Value)]?.ToString();
-            }
-            await Task.CompletedTask;
+            NavigationService.Navigate(typeof(DetailPage), movieID);
         }
-
-        public override async Task OnNavigatedFromAsync(IDictionary<string, object> suspensionState, bool suspending)
-        {
-            if (suspending)
-            {
-                suspensionState[nameof(Value)] = Value;
-            }
-            await Task.CompletedTask;
-        }
-
-        public override async Task OnNavigatingFromAsync(NavigatingEventArgs args)
-        {
-            args.Cancel = false;
-            await Task.CompletedTask;
-        }
-
-        public void GotoDetailsPage() =>
-            NavigationService.Navigate(typeof(Views.DetailPage), Value);
-
-        public void GotoSettings() =>
-            NavigationService.Navigate(typeof(Views.SettingsPage), 0);
-
-        public void GotoPrivacy() =>
-            NavigationService.Navigate(typeof(Views.SettingsPage), 1);
-
-        public void GotoAbout() =>
-            NavigationService.Navigate(typeof(Views.SettingsPage), 2);
 
     }
 }
