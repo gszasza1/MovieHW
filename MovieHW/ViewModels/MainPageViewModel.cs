@@ -33,7 +33,7 @@ namespace MovieHW.ViewModels
 
         public void NavigateToDetails(int movieID)
         {
-            NavigationService.Navigate(typeof(DetailPage), movieID);
+            NavigationService.Navigate(typeof(MovieDetailPage), movieID);
         }
 
     }
