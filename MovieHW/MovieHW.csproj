@@ -115,6 +115,7 @@
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\PersonPageViewModel.cs" />
+    <Compile Include="ViewModels\SeasonpageViewModel.cs" />
     <Compile Include="ViewModels\SeriesDetailspageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="Views\Busy.xaml.cs">
@@ -131,6 +132,9 @@
     </Compile>
     <Compile Include="Views\PersonPage.xaml.cs">
       <DependentUpon>PersonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SeasonPage.xaml.cs">
+      <DependentUpon>SeasonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SeriesDetailPage.xaml.cs">
       <DependentUpon>SeriesDetailPage.xaml</DependentUpon>
@@ -186,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PersonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SeasonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

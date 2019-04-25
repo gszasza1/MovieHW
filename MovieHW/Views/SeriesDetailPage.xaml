@@ -93,7 +93,7 @@
                                         <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
 
                                         <Border  VerticalAlignment="Bottom" Background="#AA000000">
-                                            <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
+                                            <TextBlock Margin="12" Foreground="White" Text="{Binding name}" />
                                         </Border>
 
 
@@ -106,19 +106,40 @@
                 </ScrollViewer>
                 
             </Grid>
-            <TextBlock Grid.Row="1" Text="Seasons"></TextBlock>
-            <ListView Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="TopRatedSeries_ItemClick">
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,20,20" FontSize="24" Text="Seasons:"></TextBlock>
+
+            <ListView  Background="#eff0f2" Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="SeriesEpisode_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="160" Height="240">
+                        <Grid BorderThickness="0,0,0,1" BorderBrush="Gray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160">
 
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Width="160" Height="240">
                             <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        </Grid>
+                            <Grid  Grid.Column="1" >
+                              
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="22" Text="{Binding name}"></TextBlock>
+                                <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Number of Episodes:"></TextBlock>
+                                <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding name}"></TextBlock>
+                                <TextBlock Grid.Row="3" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Overview"></TextBlock>
+                                <StackPanel Grid.Row="4" Orientation="Vertical">
+                                    <TextBlock  Grid.Row="4" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding overview}"></TextBlock>
+                                </StackPanel>
+                                
 
-                            <Border  VerticalAlignment="Bottom" Background="#AA000000">
-                                <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
-                            </Border>
-
-
+                            </Grid>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

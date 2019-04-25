@@ -50,7 +50,7 @@ namespace MovieHW.ViewModels
 
         public void NavigateToDetailsSeries(int movieID)
         {
-            NavigationService.Navigate(typeof(MovieDetailPage), movieID);
+            NavigationService.Navigate(typeof(SeriesDetailPage), movieID);
         }
     }
 }
