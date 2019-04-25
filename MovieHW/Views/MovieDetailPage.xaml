@@ -16,7 +16,7 @@
     <ScrollViewer >
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="900px"/>
+                <RowDefinition Height="900"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
@@ -30,16 +30,23 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Grid.Column="0" Source="{Binding Movie.poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                <Grid Grid.Column="1" Background="#eff0f2">
-                    <Grid.RowDefinitions>
+                <ScrollViewer Grid.Column="1">
+                <Grid  Background="#eff0f2">
+                        <Grid.Resources>
+                            <CollectionViewSource x:Key="RecommendViewSource" Source="{Binding MovieList}" />
+                           
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
                     <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="{Binding Movie.title}"></TextBlock>
                     <TextBlock Margin="20" Grid.Row="1" FontSize="20" Text="{Binding Movie.release_date}"></TextBlock>
@@ -69,8 +76,27 @@
                         <TextBlock Margin="20,5,0,0" FontSize="16" Text="{Binding Movie.revenue}"></TextBlock>
 
                     </StackPanel>
+                        <TextBlock Grid.Row="7"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="16" Text="Recommendation:"></TextBlock>
 
-                </Grid>
+                        <GridView Grid.Row="8" Padding="18" ItemsSource="{Binding Source={StaticResource RecommendViewSource}}" IsItemClickEnabled="True" ItemClick="Person_ItemClick">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="160" Height="240">
+                                        
+                                        <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+
+                                        <Border  VerticalAlignment="Bottom" Background="#AA000000">
+                                            <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
+                                        </Border>
+                                        
+
+                                    </Grid>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+
+                        </GridView>
+                    </Grid>
+                </ScrollViewer>
             </Grid>
 
             <Grid Grid.Row="2">

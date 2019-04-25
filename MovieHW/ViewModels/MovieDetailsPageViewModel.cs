@@ -30,6 +30,8 @@ namespace MovieHW.ViewModels
             new ObservableCollection<Crew>();
         public ObservableCollection<Cast> MovieCast { get; set; } =
             new ObservableCollection<Cast>();
+        public ObservableCollection<GetMovieFromList> MovieList { get; set; } =
+         new ObservableCollection<GetMovieFromList>();
 
         public override async Task OnNavigatedToAsync(
             object parameter, NavigationMode mode, IDictionary<string, object> state)
@@ -38,7 +40,13 @@ namespace MovieHW.ViewModels
 
             var service = new MovieService();
             Movie = await service.GetExactMovieAsync(movieID);
+            var movieGroups = await service.GetRecommendationMoviesAsync(movieID);
+            foreach (var item in movieGroups.results)
+            {
+                MovieList.Add(item);
+            }
 
+            await base.OnNavigatedToAsync(parameter, mode, state);
             var personService = new PersonService();
             MoviePeople = await personService.GetMoviePeopleAsync(movieID);
             foreach (var item in MoviePeople.crew)
@@ -52,9 +60,13 @@ namespace MovieHW.ViewModels
 
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
-        public void NavigateToDetails(int movieID)
+        public void NavigateToDetailsPerson(int personID)
         {
-            NavigationService.Navigate(typeof(PersonPage), movieID);
+            NavigationService.Navigate(typeof(PersonPage), personID);
+        }
+        public void NavigateToDetailsMovie(int movieID)
+        {
+            NavigationService.Navigate(typeof(MovieDetailPage), movieID);
         }
     }
 }

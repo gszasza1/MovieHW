@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieHW.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,18 @@ namespace MovieHW.Views
         public PersonPage()
         {
             this.InitializeComponent();
+        }
+        private void MovieCast_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var movieHeader = (PersonCreditCast)e.ClickedItem;
+            ViewModel.NavigateToDetails(movieHeader.id);
+
+        }
+        private void MovieCrew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var movieHeader = (PersonCreditCrew)e.ClickedItem;
+            ViewModel.NavigateToDetails(movieHeader.id);
+
         }
     }
 }

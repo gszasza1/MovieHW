@@ -20,6 +20,11 @@ namespace MovieHW.Services
             string topMovieUri = serverUrl + "/movie/top_rated" + AuthKey;
             return await GetAsync<ListMovies>(new Uri(topMovieUri));
         }
+        public async Task<ListMovies> GetRecommendationMoviesAsync(int movieID)
+        {
+            string recommendMovieUri = serverUrl + "/movie/" +movieID + "/recommendations" + AuthKey;
+            return await GetAsync<ListMovies>(new Uri(recommendMovieUri));
+        }
         public async Task<ListMovies> GetPoplarMoviesAsync(int MovieId)
         {
             string topMovieUri = serverUrl + "/movie/" + MovieId + AuthKey;

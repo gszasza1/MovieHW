@@ -27,10 +27,22 @@ namespace MovieHW.Views
         {
             this.InitializeComponent();
         }
-        private void Person_ItemClick(object sender, ItemClickEventArgs e)
+        private void PersonCast_ItemClick(object sender, ItemClickEventArgs e)
         {
             var movieHeader = (Cast)e.ClickedItem;
-            ViewModel.NavigateToDetails(movieHeader.id);
+            ViewModel.NavigateToDetailsPerson(movieHeader.id);
+
+        }
+        private void PersonCrew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var movieHeader = (Crew)e.ClickedItem;
+            ViewModel.NavigateToDetailsPerson(movieHeader.id);
+
+        }
+        private void RecommendedMovie_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var movieHeader = (GetMovieFromList)e.ClickedItem;
+            ViewModel.NavigateToDetailsMovie(movieHeader.id);
 
         }
     }

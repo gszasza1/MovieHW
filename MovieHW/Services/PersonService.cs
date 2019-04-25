@@ -21,6 +21,11 @@ namespace MovieHW.Services
             string personURI = serverUrl + "/person/" + personId + AuthKey;
             return await GetAsync<Actor>(new Uri(personURI));
         }
+        public async Task<PersonCredit> GetPersonCredditAsync(int personId)
+        {
+            string personURI = serverUrl + "/person/" + personId + "/movie_credits"+ AuthKey;
+            return await GetAsync<PersonCredit>(new Uri(personURI));
+        }
         public async Task<MoviePeople> GetMoviePeopleAsync(int movieId)
         {
             string personURI = serverUrl + "/movie/" + movieId + "/credits" + AuthKey;

@@ -102,6 +102,8 @@
     <Compile Include="Models\ListMovies.cs" />
     <Compile Include="Models\MovieDetails.cs" />
     <Compile Include="Models\MoviePeople.cs" />
+    <Compile Include="Models\PersonCredit.cs" />
+    <Compile Include="Models\Series.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\PersonService.cs" />

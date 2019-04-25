@@ -17,6 +17,10 @@
             
             Source="{Binding MovieList}"
        />
+        <CollectionViewSource x:Key="SeriesViewSource"
+            
+            Source="{Binding SeriesList}"
+       />
     </Page.Resources>
 
     <Page.DataContext>
@@ -41,38 +45,87 @@
             <Button Grid.Column="1"  Content="Search" Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="39" />
 
         </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
 
-        <TextBlock Grid.Row="1" VerticalAlignment="Center" FontSize="24px" Margin="10">Top Rated Movies</TextBlock>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="24px" Margin="10">Top Rated Movies</TextBlock>
+            <TextBlock Grid.Column="1" VerticalAlignment="Center" FontSize="24px" Margin="10">Top Rated Series</TextBlock>
+
+        </Grid>
         <!-- TODO ItemSource Binding -->
-        <GridView Grid.Row="2"
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <GridView 
+                Grid.Column="0"
                   Padding="18"
                   ItemsSource="{Binding Source={StaticResource MoviesViewSource}}"
                   IsItemClickEnabled="True"
                   ItemClick="TopRated_ItemClick">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="220" Height="270">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="220" Height="270">
 
-                        <Image Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*">
+                            <Image Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*">
 
-                                </ColumnDefinition>
-                                <ColumnDefinition Width="50"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" VerticalAlignment="Bottom" Background="#AA000000">
-                                <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
-                            </Border>
-                            <Border Grid.Column="1" VerticalAlignment="Bottom" Background="#AA000000" HorizontalAlignment="Stretch">
-                                <TextBlock HorizontalAlignment="Right" Margin="12" Foreground="White" Text="{Binding popularity}" />
-                            </Border>
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" VerticalAlignment="Bottom" Background="#AA000000">
+                                    <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
+                                </Border>
+                                <Border Grid.Column="1" VerticalAlignment="Bottom" Background="#AA000000" HorizontalAlignment="Stretch">
+                                    <TextBlock HorizontalAlignment="Right" Margin="12" Foreground="White" Text="{Binding popularity}" />
+                                </Border>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
 
-        </GridView>
+            </GridView>
+            <GridView 
+                Grid.Column="1"
+                  Padding="18"
+                  ItemsSource="{Binding Source={StaticResource SeriesViewSource}}"
+                  IsItemClickEnabled="True"
+                  ItemClick="TopRated_ItemClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="220" Height="270">
+
+                            <Image Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*">
+
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" VerticalAlignment="Bottom" Background="#AA000000">
+                                    <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
+                                </Border>
+                                <Border Grid.Column="1" VerticalAlignment="Bottom" Background="#AA000000" HorizontalAlignment="Stretch">
+                                    <TextBlock HorizontalAlignment="Right" Margin="12" Foreground="White" Text="{Binding popularity}" />
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+            </GridView>
+        </Grid>
+       
 
 
     </Grid>
