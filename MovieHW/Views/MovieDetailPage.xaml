@@ -78,7 +78,7 @@
                     </StackPanel>
                         <TextBlock Grid.Row="7"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="16" Text="Recommendation:"></TextBlock>
 
-                        <GridView Grid.Row="8" Padding="18" ItemsSource="{Binding Source={StaticResource RecommendViewSource}}" IsItemClickEnabled="True" ItemClick="Person_ItemClick">
+                        <GridView Grid.Row="8" Padding="18" ItemsSource="{Binding Source={StaticResource RecommendViewSource}}" IsItemClickEnabled="True" ItemClick="RecommendedMovie_ItemClick">
                             <GridView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Width="160" Height="240">
@@ -86,7 +86,7 @@
                                         <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
 
                                         <Border  VerticalAlignment="Bottom" Background="#AA000000">
-                                            <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
+                                            <TextBlock Margin="12" Foreground="White" Text="{Binding name}" />
                                         </Border>
                                         
 
@@ -114,7 +114,7 @@
                 <StackPanel Grid.Column="0" Orientation="Vertical">
                     <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="Cast:"></TextBlock>
 
-                    <GridView Padding="18" ItemsSource="{Binding Source={StaticResource CastViewSource}}" IsItemClickEnabled="True" ItemClick="Person_ItemClick">
+                    <GridView Padding="18" ItemsSource="{Binding Source={StaticResource CastViewSource}}" IsItemClickEnabled="True" ItemClick="PersonCast_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Width="220" Height="300">
@@ -140,7 +140,7 @@
                 <StackPanel Grid.Column="1" Orientation="Vertical">
                     <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="Crew:"></TextBlock>
 
-                    <GridView Padding="18" ItemsSource="{Binding Source={StaticResource CrewViewSource}}" IsItemClickEnabled="True" ItemClick="Person_ItemClick">
+                    <GridView Padding="18" ItemsSource="{Binding Source={StaticResource CrewViewSource}}" IsItemClickEnabled="True" ItemClick="PersonCrew_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Width="220" Height="270">

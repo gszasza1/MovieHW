@@ -72,7 +72,7 @@ namespace MovieHW.Models
         public int season_number { get; set; }
     }
 
-    public class Series
+    public class SeriesDetails
     {
         public string backdrop_path { get; set; }
         public List<CreatedBy> created_by { get; set; }

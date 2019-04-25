@@ -15,10 +15,16 @@ namespace MovieHW.Views
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
-        private void TopRated_ItemClick(object sender, ItemClickEventArgs e)
+        private void TopRatedMovies_ItemClick(object sender, ItemClickEventArgs e)
         {
             var movieHeader = (GetMovieFromList)e.ClickedItem;
-            ViewModel.NavigateToDetails(movieHeader.id);
+            ViewModel.NavigateToDetailsMovies(movieHeader.id);
+
+        }
+        private void TopRatedSeries_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var seriesHeader = (GetSeriesFromList)e.ClickedItem;
+            ViewModel.NavigateToDetailsSeries(seriesHeader.id);
 
         }
     }
