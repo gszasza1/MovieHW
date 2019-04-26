@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieHW.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,18 @@ namespace MovieHW.Views
         public SearchPage()
         {
             this.InitializeComponent();
+        }
+        private void Movies_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var movieHeader = (GetMovieFromList)e.ClickedItem;
+            ViewModel.NavigateToDetailsMovies(movieHeader.id);
+
+        }
+        private void Series_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var seriesHeader = (GetSeriesFromList)e.ClickedItem;
+            ViewModel.NavigateToDetailsSeries(seriesHeader.id);
+
         }
     }
 }

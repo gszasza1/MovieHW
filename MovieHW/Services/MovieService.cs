@@ -27,20 +27,22 @@ namespace MovieHW.Services
         }
         public async Task<ListMovies> GetPoplarMoviesAsync(int MovieId)
         {
-            string topMovieUri = serverUrl + "/movie/" + MovieId + AuthKey;
-            return await GetAsync<ListMovies>(new Uri(topMovieUri));
+            string popularMovieUri = serverUrl + "/movie/" + MovieId + AuthKey;
+            return await GetAsync<ListMovies>(new Uri(popularMovieUri));
         }
 
         public async Task<MovieDetails> GetExactMovieAsync(int movieID)
         {
-            string topMovieUri = serverUrl + "/movie/" + movieID + AuthKey;
-            return await GetAsync<MovieDetails>(new Uri(topMovieUri));
+            string exactMovieUri = serverUrl + "/movie/" + movieID + AuthKey;
+            return await GetAsync<MovieDetails>(new Uri(exactMovieUri));
         }
-        public async Task<ListMovies> SearchMovieAsync()
+        public async Task<ListMovies> SearchMovieAsync(string searcguery)
         {
-            string topMovieUri = serverUrl + "/search/movie" + AuthKey;
-            return await GetAsync<ListMovies>(new Uri(topMovieUri));
+            string searchMovieUri = serverUrl + "/search/movie" + AuthKey+ "&query="+ searcguery;
+            return await GetAsync<ListMovies>(new Uri(searchMovieUri));
         }
+
+
 
         private async Task<T> GetAsync<T>(Uri uri)
         {

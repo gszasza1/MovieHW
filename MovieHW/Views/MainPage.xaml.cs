@@ -5,6 +5,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
 using MovieHW.Models;
+using System.Windows.Input;
+using Windows.UI.Core;
 
 namespace MovieHW.Views
 {
@@ -32,5 +34,7 @@ namespace MovieHW.Views
             string content = SearchBox.Text;
             ViewModel.NavigateToSearch(content);
         }
+       
+        
     }
 }

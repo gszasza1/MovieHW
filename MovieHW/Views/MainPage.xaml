@@ -41,7 +41,7 @@
                 </ColumnDefinition>
                 <ColumnDefinition Width="119*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox  Grid.Column="0" FontSize="21" Name="SearchBox" Margin="20,20,10.4,20" Background="Azure" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <TextBox Grid.Column="0" FontSize="21" Name="SearchBox" Margin="20,20,10.4,20" Background="Azure" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <Button Click="Search_Click" Grid.Column="1"  Content="Search" Margin="0,0,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="39" />
 
         </Grid>

@@ -17,8 +17,8 @@ namespace MovieHW.Services
 
         public async Task<ListSeries> GetTopSeriesAsync()
         {
-            string seriesURI = serverUrl + "/tv/top_rated" + AuthKey;
-            return await GetAsync<ListSeries>(new Uri(seriesURI));
+            string seriesTopURI = serverUrl + "/tv/top_rated" + AuthKey;
+            return await GetAsync<ListSeries>(new Uri(seriesTopURI));
         }
         public async Task<ListSeries> GetRecommendedSeriesAsync(int seriesID)
         {
@@ -32,8 +32,13 @@ namespace MovieHW.Services
         }
         public async Task<SeriesSeasons> GetSeriesSeasonAsync(int seriesID, int seasonID)
         {
-            string seriesURI = serverUrl + "/tv/" + seriesID + "/season/" + seasonID + AuthKey;
-            return await GetAsync<SeriesSeasons>(new Uri(seriesURI));
+            string seriesSeasonURI = serverUrl + "/tv/" + seriesID + "/season/" + seasonID + AuthKey;
+            return await GetAsync<SeriesSeasons>(new Uri(seriesSeasonURI));
+        }
+        public async Task<ListSeries> SearchSeriesAsync(string searcguery)
+        {
+            string searchSeriesUri = serverUrl + "/search/tv" + AuthKey + "&query=" + searcguery;
+            return await GetAsync<ListSeries>(new Uri(searchSeriesUri));
         }
 
 

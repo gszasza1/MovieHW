@@ -1,40 +1,41 @@
-﻿using Template10.Mvvm;
-using System.Collections.Generic;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Template10.Services.NavigationService;
-using Windows.UI.Xaml.Navigation;
-using System.Collections.ObjectModel;
-using MovieHW.Models;
+﻿using MovieHW.Models;
 using MovieHW.Services;
 using MovieHW.Views;
-using Windows.UI.Xaml.Controls;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Template10.Mvvm;
+using Windows.UI.Xaml.Navigation;
 
 namespace MovieHW.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class SearchPageViewModel:ViewModelBase
     {
+
         public ObservableCollection<GetMovieFromList> MovieList { get; set; } =
-           new ObservableCollection<GetMovieFromList>();
+          new ObservableCollection<GetMovieFromList>();
         public ObservableCollection<GetSeriesFromList> SeriesList { get; set; } =
            new ObservableCollection<GetSeriesFromList>();
 
 
+
         public override async Task OnNavigatedToAsync(
-         object parameter, NavigationMode mode, IDictionary<string, object> state)
+        object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
 
-       
+            var searchquery = (string)parameter;
 
             var movieservice = new MovieService();
-            var movieGroups = await movieservice.GetTopratedMoviesAsync();
+            var seriesService = new SeriesService();
+            var movieGroups = await movieservice.SearchMovieAsync(searchquery);
             foreach (var item in movieGroups.results)
             {
                 MovieList.Add(item);
             }
-            var seriesservice = new SeriesService();
-            var seriesGroups = await seriesservice.GetTopSeriesAsync();
+            var seriesGroups = await seriesService.SearchSeriesAsync(searchquery);
             foreach (var item in seriesGroups.results)
             {
                 SeriesList.Add(item);
@@ -42,7 +43,6 @@ namespace MovieHW.ViewModels
 
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
-
         public void NavigateToDetailsMovies(int movieID)
         {
             NavigationService.Navigate(typeof(MovieDetailPage), movieID);
@@ -51,10 +51,7 @@ namespace MovieHW.ViewModels
         {
             NavigationService.Navigate(typeof(SeriesDetailPage), movieID);
         }
-        
-        public void NavigateToSearch(string searchstring)
-        {
-            NavigationService.Navigate(typeof(SearchPage), searchstring);
-        }
+
+
     }
 }

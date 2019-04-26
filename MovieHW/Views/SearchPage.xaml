@@ -6,8 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:MovieHW.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:SearchPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="SeasonListViewSource"
+            Source="{Binding SeriesList}"/>
+        <CollectionViewSource x:Key="MovieListViewSource"
+            Source="{Binding MovieList}"/>
+    </Page.Resources>
 
     <ScrollViewer>
     <Grid>
@@ -16,15 +27,85 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="24 " Text="Movies:"></TextBlock>
+            <TextBlock Grid.Row="0"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,20" FontSize="24 " Text="Movies:"></TextBlock>
+            <ListView  Background="#eff0f2" Grid.Row="1" Padding="18" ItemsSource="{Binding Source={StaticResource MovieListViewSource}}" IsItemClickEnabled="True" ItemClick="Movies_ItemClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderThickness="0,0,0,1" BorderBrush="Gray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160">
 
-            <TextBlock Grid.Row="2"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="24 " Text="Series:"></TextBlock>
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Width="160" Height="240">
+                                <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Grid  Grid.Column="1" >
 
-            <TextBlock Grid.Row="4"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="24 " Text="People:"></TextBlock>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="22" Text="{Binding title}"></TextBlock>
+                                <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Release:"></TextBlock>
+                                <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding release_date}"></TextBlock>
+                                <TextBlock Grid.Row="3" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Overview"></TextBlock>
+                                <StackPanel Grid.Row="4" Orientation="Vertical">
+                                    <TextBlock  Grid.Row="4" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding overview}"></TextBlock>
+                                </StackPanel>
+
+
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <TextBlock Grid.Row="2"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,20" FontSize="24 " Text="Series:"></TextBlock>
+            <ListView  Background="#eff0f2" Grid.Row="3" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="Series_ItemClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderThickness="0,0,0,1" BorderBrush="Gray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160">
+
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Width="160" Height="240">
+                                <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Grid  Grid.Column="1" >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="22" Text="{Binding name}"></TextBlock>
+                                <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Release:"></TextBlock>
+                                <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding first_air_date}"></TextBlock>
+                                <TextBlock Grid.Row="3" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Overview"></TextBlock>
+                                <StackPanel Grid.Row="4" Orientation="Vertical">
+                                    <TextBlock  Grid.Row="4" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding overview}"></TextBlock>
+                                </StackPanel>
+
+
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
 
 
         </Grid>
