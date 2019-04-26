@@ -27,5 +27,10 @@ namespace MovieHW.Views
             ViewModel.NavigateToDetailsSeries(seriesHeader.id);
 
         }
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            string content = SearchBox.Text;
+            ViewModel.NavigateToSearch(content);
+        }
     }
 }

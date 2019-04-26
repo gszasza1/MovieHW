@@ -86,7 +86,7 @@
                                         <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
 
                                         <Border  VerticalAlignment="Bottom" Background="#AA000000">
-                                            <TextBlock Margin="12" Foreground="White" Text="{Binding name}" />
+                                            <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
                                         </Border>
                                         
 

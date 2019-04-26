@@ -47,6 +47,10 @@ namespace MovieHW.ViewModels
         {
             NavigationService.Navigate(typeof(SeriesDetailPage), movieID);
         }
-
+        
+        public void NavigateToSearch(string searchstring)
+        {
+            NavigationService.Navigate(typeof(SeriesDetailPage), searchstring);
+        }
     }
 }

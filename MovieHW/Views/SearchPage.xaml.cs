@@ -1,5 +1,4 @@
-﻿using MovieHW.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,23 +20,11 @@ namespace MovieHW.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SeriesDetailPage : Page
+    public sealed partial class SearchPage : Page
     {
-        public SeriesDetailPage()
+        public SearchPage()
         {
             this.InitializeComponent();
-        }
-        private void TopRatedSeries_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var seriesHeader = (GetSeriesFromList)e.ClickedItem;
-            ViewModel.NavigateToDetailsSeries(seriesHeader.id);
-
-        }
-        private void SeriesEpisode_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var seasonHeader = (Season)e.ClickedItem;
-            ViewModel.NavigateToDetailsEpisode(seasonHeader.season_number);
-
         }
     }
 }

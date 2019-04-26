@@ -6,9 +6,82 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:MovieHW.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:SeasonpageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="EpisodesListViewSource"
+            
+            Source="{Binding EpisodeList}"
+       />
+    </Page.Resources>
+    <ScrollViewer>
     <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"  Background="#eff0f2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"  Source="{Binding Season.poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20" Grid.Row="0" FontSize="30" Text="{Binding Season.name}"></TextBlock>
+                <TextBlock Margin="20" Grid.Row="1" FontSize="20" Text="{Binding Season.air_date}"></TextBlock>
+                <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,10,10" FontSize="20" Text="Overview:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="20,10,10,100" FontSize="20" Text="{Binding Season.overview}"></TextBlock>
+
+            </StackPanel>
+        </Grid>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,10,10" FontSize="24" Text="Episodes:"></TextBlock>
+
+            <ListView  Background="#eff0f2" Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource EpisodesListViewSource}}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5,5,5,5" BorderThickness="0,0,0,1" BorderBrush="Gray">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160">
+
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Width="160" Height="240">
+                            <Image  Source="{Binding still_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid  Grid.Column="1" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="22" Text="{Binding name}"></TextBlock>
+                            <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Premier:"></TextBlock>
+                            <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding air_date}"></TextBlock>
+                            <TextBlock Grid.Row="3" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Overview"></TextBlock>
+                            <StackPanel Grid.Row="4" Orientation="Vertical">
+                                <TextBlock  Grid.Row="4" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding overview}"></TextBlock>
+                            </StackPanel>
+
+
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
 
     </Grid>
+    </ScrollViewer>
 </Page>

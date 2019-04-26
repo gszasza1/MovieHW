@@ -23,6 +23,8 @@ namespace MovieHW.ViewModels
             set { Set(ref _series, value); }
         }
 
+        int seriesID;
+
         public ObservableCollection<GetSeriesFromList>SeriesList { get; set; } =
          new ObservableCollection<GetSeriesFromList>();
 
@@ -32,7 +34,7 @@ namespace MovieHW.ViewModels
         public override async Task OnNavigatedToAsync(
          object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            var seriesID = (int)parameter;
+            seriesID = (int)parameter;
 
             var seriesService = new SeriesService();
             Series = await seriesService.GetEcaxtSeriesAsync(seriesID);
@@ -48,9 +50,17 @@ namespace MovieHW.ViewModels
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
 
-        public void NavigateToDetailsSeries(int movieID)
+        public void NavigateToDetailsSeries(int serieID)
         {
-            NavigationService.Navigate(typeof(SeriesDetailPage), movieID);
+            
+            NavigationService.Navigate(typeof(SeriesDetailPage), serieID);
+        }
+        public void NavigateToDetailsEpisode(int seasonID)
+        {
+            List<int> idList = new List<int>();
+            idList.Add(seriesID);
+            idList.Add(seasonID);
+            NavigationService.Navigate(typeof(SeasonPage), idList);
         }
     }
 }
