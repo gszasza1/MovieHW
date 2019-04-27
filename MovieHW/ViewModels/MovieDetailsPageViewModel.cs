@@ -45,8 +45,7 @@ namespace MovieHW.ViewModels
             {
                 MovieList.Add(item);
             }
-
-            await base.OnNavigatedToAsync(parameter, mode, state);
+            
             var personService = new PersonService();
             MoviePeople = await personService.GetMoviePeopleAsync(movieID);
             foreach (var item in MoviePeople.crew)

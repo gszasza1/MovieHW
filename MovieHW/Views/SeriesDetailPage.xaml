@@ -18,7 +18,7 @@
             
             Source="{Binding SeasonList}"
        />
-        </Page.Resources>
+    </Page.Resources>
 
     <ScrollViewer >
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -38,7 +38,7 @@
 
                 <Image Grid.Column="0" Source="{Binding Series.poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
                 <ScrollViewer Grid.Column="1">
-                    <Grid  Background="#eff0f2">
+                    <Grid  Background="#4c4c4c">
                         <Grid.Resources>
                             <CollectionViewSource x:Key="RecommendViewSource" Source="{Binding SeriesList}" />
 
@@ -104,46 +104,50 @@
                         </GridView>
                     </Grid>
                 </ScrollViewer>
-                
+
             </Grid>
             <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,20,20" FontSize="24" Text="Seasons:"></TextBlock>
 
-            <ListView  Background="#eff0f2" Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="SeriesEpisode_ItemClick">
+            <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#4c4c4c" Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="SeriesEpisode_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid BorderThickness="0,0,0,1" BorderBrush="Gray">
+
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0,0,0,1" BorderBrush="Gray">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="160">
 
                                 </ColumnDefinition>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Width="160" Height="240">
-                            <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        </Grid>
-                            <Grid  Grid.Column="1" >
-                              
+                                <Image  Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" >
+
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition  Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="22" Text="{Binding name}"></TextBlock>
+                                <TextBlock Grid.Row="0" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,0" FontSize="26" Text="{Binding name}"></TextBlock>
                                 <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Number of Episodes:"></TextBlock>
-                                <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding number_of_episodes}"></TextBlock>
-                                <TextBlock Grid.Row="3" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Overview"></TextBlock>
+                                <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding episode_count}"></TextBlock>
+                                <TextBlock  Grid.Row="3" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,10,0,0" FontSize="18" Text="Overview"></TextBlock>
                                 <StackPanel Grid.Row="4" Orientation="Vertical">
                                     <TextBlock  Grid.Row="4" TextWrapping="Wrap" Margin="20,10,0,0" FontSize="18" Text="{Binding overview}"></TextBlock>
                                 </StackPanel>
-                                
+
 
                             </Grid>
+                              
                         </Grid>
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
+                
             </ListView>
 
         </Grid>

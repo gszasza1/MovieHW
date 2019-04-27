@@ -35,6 +35,11 @@ namespace MovieHW.Services
             string seriesSeasonURI = serverUrl + "/tv/" + seriesID + "/season/" + seasonID + AuthKey;
             return await GetAsync<SeriesSeasons>(new Uri(seriesSeasonURI));
         }
+        public async Task<Episode> GetEpisodeAsync(int seriesID, int seasonID, int episodeID)
+        {
+            string seriesSeasonURI = serverUrl + "/tv/" + seriesID + "/season/" + seasonID +"/episode/" + episodeID + AuthKey;
+            return await GetAsync<Episode>(new Uri(seriesSeasonURI));
+        }
         public async Task<ListSeries> SearchSeriesAsync(string searcguery)
         {
             string searchSeriesUri = serverUrl + "/search/tv" + AuthKey + "&query=" + searcguery;

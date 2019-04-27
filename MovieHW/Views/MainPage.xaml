@@ -69,6 +69,7 @@
                   Padding="18"
                   ItemsSource="{Binding Source={StaticResource MoviesViewSource}}"
                   IsItemClickEnabled="True"
+                
                   ItemClick="TopRatedMovies_ItemClick">
                 <GridView.ItemTemplate>
                     <DataTemplate>

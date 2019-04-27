@@ -21,16 +21,22 @@ namespace MovieHW.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SeasonPage : Page
+    public sealed partial class EpisodePage : Page
     {
-        public SeasonPage()
+        public EpisodePage()
         {
             this.InitializeComponent();
         }
-        private void Episode_ItemClick(object sender, ItemClickEventArgs e)
+        private void GuestStar_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var SeriesCrewHeader = (Episode)e.ClickedItem;
-            ViewModel.NavigateToEpisode(SeriesCrewHeader.episode_number);
+            var GuestStarHeader = (GuestStar)e.ClickedItem;
+            ViewModel.NavigateToGuesttar(GuestStarHeader.id);
+
+        }
+        private void EpisodeCrew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var SeriesCrewHeader = (SeriesCrew)e.ClickedItem;
+            ViewModel.NavigateToCast(SeriesCrewHeader.id);
 
         }
     }

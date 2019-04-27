@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,20" FontSize="24 " Text="Movies:"></TextBlock>
-            <ListView  Background="#eff0f2" Grid.Row="1" Padding="18" ItemsSource="{Binding Source={StaticResource MovieListViewSource}}" IsItemClickEnabled="True" ItemClick="Movies_ItemClick">
+            <ListView  Background="#4c4c4c" Grid.Row="1" Padding="18" ItemsSource="{Binding Source={StaticResource MovieListViewSource}}" IsItemClickEnabled="True" ItemClick="Movies_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid BorderThickness="0,0,0,1" BorderBrush="Gray">
@@ -69,7 +69,7 @@
             </ListView>
 
             <TextBlock Grid.Row="2"  TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,0,20" FontSize="24 " Text="Series:"></TextBlock>
-            <ListView  Background="#eff0f2" Grid.Row="3" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="Series_ItemClick">
+            <ListView  Background="#4c4c4c" Grid.Row="3" Padding="18" ItemsSource="{Binding Source={StaticResource SeasonListViewSource}}" IsItemClickEnabled="True" ItemClick="Series_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid BorderThickness="0,0,0,1" BorderBrush="Gray">

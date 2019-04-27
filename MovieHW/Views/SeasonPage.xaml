@@ -27,7 +27,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"  Background="#eff0f2">
+            <Grid Grid.Row="0"  Background="#4c4c4c">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="9*"/>
@@ -44,7 +44,7 @@
         </Grid>
             <TextBlock Grid.Row="1" TextWrapping="Wrap" FontWeight="SemiBold" Margin="20,20,10,10" FontSize="24" Text="Episodes:"></TextBlock>
 
-            <ListView  Background="#eff0f2" Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource EpisodesListViewSource}}">
+            <ListView  Background="#4c4c4c" Grid.Row="2" Padding="18" ItemsSource="{Binding Source={StaticResource EpisodesListViewSource}}"  IsItemClickEnabled="True" ItemClick="Episode_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5,5,5,5" BorderThickness="0,0,0,1" BorderBrush="Gray">
@@ -52,7 +52,7 @@
                             <ColumnDefinition Width="160">
 
                             </ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Width="160" Height="240">
                             <Image  Source="{Binding still_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>

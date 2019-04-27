@@ -32,7 +32,7 @@
 
                 <Image Grid.Column="0" Source="{Binding Actor.profile_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
                 <ScrollViewer Grid.Column="1">
-                <Grid  Background="#eff0f2">
+                    <Grid  Background="#4c4c4c">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
