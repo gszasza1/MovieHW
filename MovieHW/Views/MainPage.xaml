@@ -76,20 +76,23 @@
                         <Grid Width="220" Height="270">
 
                             <Image Source="{Binding poster_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                            <Grid>
+                            <Border Grid.Column="0" VerticalAlignment="Bottom" Background="#AA000000">
+                                <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*">
 
                                     </ColumnDefinition>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" VerticalAlignment="Bottom" Background="#AA000000">
-                                    <TextBlock Margin="12" Foreground="White" Text="{Binding title}" />
-                                </Border>
-                                <Border Grid.Column="1" VerticalAlignment="Bottom" Background="#AA000000" HorizontalAlignment="Stretch">
-                                    <TextBlock HorizontalAlignment="Right" Margin="12" Foreground="White" Text="{Binding popularity}" />
-                                </Border>
+                             
+                                  
+                                    <TextBlock MinWidth="100" MaxWidth="150" TextWrapping="Wrap" Margin="12" Foreground="White" Text="{Binding title}" />
+                                    <TextBlock  HorizontalAlignment="Right" Margin="12" Foreground="White" Text="{Binding popularity}" />
+                                
+                                
+                                
                             </Grid>
+                            </Border>
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>

@@ -37,6 +37,7 @@ namespace MovieHW.ViewModels
             var seriesGroups = await seriesservice.GetTopSeriesAsync();
             foreach (var item in seriesGroups.results)
             {
+
                 SeriesList.Add(item);
             }
 
