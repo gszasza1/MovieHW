@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MovieHW.ViewModels
 {
+
+    //Epizódokért felelős ViewModel
     public class EpisodeViewModel : ViewModelBase
     {
         private Episode _episode;
@@ -26,6 +28,7 @@ namespace MovieHW.ViewModels
         public ObservableCollection<GuestStar> GuestStar { get; set; } =
             new ObservableCollection<GuestStar>();
 
+        //Ha az oldalra kerül, akkor hívjon szervízt ami letölti az adatokat, ami itt be lesz állítva
         public override async Task OnNavigatedToAsync(
             object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
@@ -45,10 +48,14 @@ namespace MovieHW.ViewModels
 
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
+
+        //Cast-ban résztvevő ember oldalára való navigáció
         public void NavigateToCast(int personID)
         {
             NavigationService.Navigate(typeof(PersonPage), personID);
         }
+
+        //Star oldalára való navigáció
         public void NavigateToGuesttar(int personID)
         {
             NavigationService.Navigate(typeof(PersonPage), personID);
