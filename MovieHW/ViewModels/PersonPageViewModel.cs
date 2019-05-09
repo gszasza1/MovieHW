@@ -1,13 +1,17 @@
 ﻿using MovieHW.Models;
 using MovieHW.Services;
 using MovieHW.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
+using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Navigation;
 
 namespace MovieHW.ViewModels
@@ -62,5 +66,18 @@ namespace MovieHW.ViewModels
         {
             NavigationService.Navigate(typeof(MovieDetailPage), movieID);
         }
+
+        public async Task SavePersonImageAsync()
+        {
+            var personImage = Actor.profile_path;
+            string json = JsonConvert.SerializeObject(Actor);
+            string filename = Actor.name + ".txt";
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync(filename, Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            string asd = sampleFile.Path;
+            await Windows.Storage.FileIO.WriteTextAsync(sampleFile, json);
+
+        }
+
     }
 }

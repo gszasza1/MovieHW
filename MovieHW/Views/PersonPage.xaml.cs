@@ -41,5 +41,9 @@ namespace MovieHW.Views
             ViewModel.NavigateToDetails(movieHeader.id);
 
         }
+        private void Image_Click(object sender, RoutedEventArgs e)
+        {
+             ViewModel.SavePersonImageAsync();
+        }
     }
 }

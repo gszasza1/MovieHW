@@ -30,16 +30,17 @@
                     <ColumnDefinition Width="5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Column="0" Source="{Binding Actor.profile_path}" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                <Image Grid.Column="0" Source="{Binding Actor.profile_path}"  Stretch="UniformToFill" VerticalAlignment="Center"/>
                 <ScrollViewer Grid.Column="1">
                     <Grid  Background="#4c4c4c">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock TextWrapping="Wrap" FontWeight="SemiBold"  Margin="20" Grid.Row="0" FontSize="30"  Text="{Binding Actor.name}"></TextBlock>
@@ -64,9 +65,11 @@
                             <TextBlock TextWrapping="Wrap"  Margin="20,5,0,0" FontSize="16"  Text="{Binding Actor.birthday}"></TextBlock>
 
                     </StackPanel>
-                   
+                        <StackPanel Grid.Row="6" Orientation="Vertical">
+                            <Button Margin="20" Click="Image_Click">Itt letöltheted az ember adatait</Button>
+                        </StackPanel>
 
-                </Grid>
+                    </Grid>
                 </ScrollViewer>
             </Grid>
             <Grid Grid.Row="1">

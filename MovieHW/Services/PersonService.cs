@@ -35,6 +35,7 @@ namespace MovieHW.Services
             string personURI = serverUrl + "/movie/" + movieId + "/credits" + AuthKey;
             return await GetAsync<MoviePeople>(new Uri(personURI));
         }
+      
 
         //Api hívás, illetve válasz JSONból való visszakonvertálása
         private async Task<T> GetAsync<T>(Uri uri)
