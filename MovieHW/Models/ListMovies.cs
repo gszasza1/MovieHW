@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+
+    //filmek listájához kapcsolódó osztályok
     public class ListMovies
     {
         public int page { get; set; }

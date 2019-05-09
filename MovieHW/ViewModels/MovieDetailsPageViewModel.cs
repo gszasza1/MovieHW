@@ -14,6 +14,8 @@ namespace MovieHW.ViewModels
 {
     class MovieDetailsPageViewModel : ViewModelBase
     {
+
+        //Megjelenítendő adatok objekt-jei
         private MovieDetails _movie;
         public MovieDetails Movie
         {
@@ -33,11 +35,14 @@ namespace MovieHW.ViewModels
         public ObservableCollection<GetMovieFromList> MovieList { get; set; } =
          new ObservableCollection<GetMovieFromList>();
 
+
+        //Beérkezésre mi történik
         public override async Task OnNavigatedToAsync(
             object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             var movieID = (int)parameter;
 
+            //Film részletes adatainak letöltése, és listába kötése
             var service = new MovieService();
             Movie = await service.GetExactMovieAsync(movieID);
             var movieGroups = await service.GetRecommendationMoviesAsync(movieID);
@@ -46,6 +51,7 @@ namespace MovieHW.ViewModels
                 MovieList.Add(item);
             }
             
+            //Filmhez tartozó emberek betöltése és listába kötése
             var personService = new PersonService();
             MoviePeople = await personService.GetMoviePeopleAsync(movieID);
             foreach (var item in MoviePeople.crew)
@@ -59,10 +65,14 @@ namespace MovieHW.ViewModels
 
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
+
+        //OnClick
+        //Embert részletező oldalra navigál
         public void NavigateToDetailsPerson(int personID)
         {
             NavigationService.Navigate(typeof(PersonPage), personID);
         }
+        //Filmet részletező oldalra navigál
         public void NavigateToDetailsMovie(int movieID)
         {
             NavigationService.Navigate(typeof(MovieDetailPage), movieID);

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+
+    //FIlm és részleteinek osztálya
     public class MovieDetails
     {
         public bool adult { get; set; }

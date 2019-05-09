@@ -27,6 +27,8 @@ namespace MovieHW.Views
         {
             this.InitializeComponent();
         }
+
+        //Onclickre a ViewModel milyen függvénye
         private void GuestStar_ItemClick(object sender, ItemClickEventArgs e)
         {
             var GuestStarHeader = (GuestStar)e.ClickedItem;

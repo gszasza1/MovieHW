@@ -27,6 +27,8 @@ namespace MovieHW.Views
         {
             this.InitializeComponent();
         }
+
+        //Onclickre a ViewModel milyen függvénye
         private void Movies_ItemClick(object sender, ItemClickEventArgs e)
         {
             var movieHeader = (GetMovieFromList)e.ClickedItem;

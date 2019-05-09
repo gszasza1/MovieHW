@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+    //Genres osztályok
     public class Genres
     {
         public int id { get; set; }

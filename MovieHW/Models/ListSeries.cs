@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
-
+    //Sorozatok listázása
     public class GetSeriesFromList
     {
         public string poster_path

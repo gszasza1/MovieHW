@@ -14,20 +14,21 @@ namespace MovieHW.ViewModels
 {
     public class SearchPageViewModel:ViewModelBase
     {
-
+        //Megjelenítendő adatokat tartalmazó objekt-ek
         public ObservableCollection<GetMovieFromList> MovieList { get; set; } =
           new ObservableCollection<GetMovieFromList>();
         public ObservableCollection<GetSeriesFromList> SeriesList { get; set; } =
            new ObservableCollection<GetSeriesFromList>();
 
 
-
+        //Beérkezésre mi történjen
         public override async Task OnNavigatedToAsync(
         object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
 
             var searchquery = (string)parameter;
 
+            //Filmek és sorozatok keresése string alapján
             var movieservice = new MovieService();
             var seriesService = new SeriesService();
             var movieGroups = await movieservice.SearchMovieAsync(searchquery);
@@ -43,10 +44,15 @@ namespace MovieHW.ViewModels
 
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
+
+        //OnClick
+        //Filmet részletező oldalra navigál
         public void NavigateToDetailsMovies(int movieID)
         {
             NavigationService.Navigate(typeof(MovieDetailPage), movieID);
         }
+
+        //Sorozatot részletező oldalra navigál
         public void NavigateToDetailsSeries(int movieID)
         {
             NavigationService.Navigate(typeof(SeriesDetailPage), movieID);

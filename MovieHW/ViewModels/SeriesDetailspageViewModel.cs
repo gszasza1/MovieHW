@@ -15,7 +15,7 @@ namespace MovieHW.ViewModels
 {
     public class SeriesDetailspageViewModel : ViewModelBase
     {
-
+        //Megjelenítendő adatok 
         private SeriesDetails _series;
         public SeriesDetails Series
         {
@@ -31,11 +31,13 @@ namespace MovieHW.ViewModels
         public ObservableCollection<Season> SeasonList { get; set; } =
          new ObservableCollection<Season>();
 
+        //Beérkezésre mi történjen
         public override async Task OnNavigatedToAsync(
          object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             seriesID = (int)parameter;
 
+            //Sorozat adatainak lekérése
             var seriesService = new SeriesService();
             Series = await seriesService.GetEcaxtSeriesAsync(seriesID);
             var SeriesGroups = await seriesService.GetRecommendedSeriesAsync(seriesID);
@@ -50,11 +52,15 @@ namespace MovieHW.ViewModels
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
 
+        //OnClick
+        //Sorozat oldalra navigál
         public void NavigateToDetailsSeries(int serieID)
         {
             
             NavigationService.Navigate(typeof(SeriesDetailPage), serieID);
         }
+
+        //Sorozat évadaihoz navigál
         public void NavigateToDetailsEpisode(int seasonID)
         {
             List<int> idList = new List<int>();

@@ -17,6 +17,8 @@ namespace MovieHW.Views
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
+
+        //Onclickre a ViewModel milyen függvénye
         private void TopRatedMovies_ItemClick(object sender, ItemClickEventArgs e)
         {
             var movieHeader = (GetMovieFromList)e.ClickedItem;

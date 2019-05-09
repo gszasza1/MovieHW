@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+
+    //Filmhez tartozó emberek osztályai
     public class Cast
     {
         public int cast_id { get; set; }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+
+    //Sorozat és adatainak osztályai
     public class CreatedBy
     {
         public int id { get; set; }

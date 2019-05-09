@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+
+    //Ember profiljához tartozó adatok osztálya
     public class PersonCreditCast
     {
         public string character { get; set; }

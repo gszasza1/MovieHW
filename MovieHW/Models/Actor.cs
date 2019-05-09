@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+
+    //Színészhez kapcsolódó osztályok
     public class Actor
     {
         public string birthday { get; set; }

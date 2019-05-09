@@ -14,7 +14,7 @@ namespace MovieHW.ViewModels
 {
     public class SeasonpageViewModel: ViewModelBase
     {
-
+        //Megjelenítendő adatok objekt-jei
         private SeriesSeasons _season;
         public SeriesSeasons Season
         {
@@ -26,11 +26,13 @@ namespace MovieHW.ViewModels
         public ObservableCollection<Episode> EpisodeList { get; set; } =
         new ObservableCollection<Episode>();
 
+        //Beérkezésre mi történjen
         public override async Task OnNavigatedToAsync(
          object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
              seriesID = (List<int>)parameter;
 
+            //Sorozat évadainak lekérése, és objektumba kötése
             var seriesService = new SeriesService();
             Season = await seriesService.GetSeriesSeasonAsync(seriesID[0], seriesID[1]);
             foreach (var item in Season.episodes)
@@ -40,6 +42,9 @@ namespace MovieHW.ViewModels
             
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
+
+        //OnClick
+        //Epizód oldalra navigál
         public void NavigateToEpisode(int episodeID)
         {
             seriesID.Add(episodeID);

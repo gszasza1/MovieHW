@@ -27,6 +27,8 @@ namespace MovieHW.Views
         {
             this.InitializeComponent();
         }
+
+        //Onclickre a ViewModel milyen függvénye
         private void Episode_ItemClick(object sender, ItemClickEventArgs e)
         {
             var SeriesCrewHeader = (Episode)e.ClickedItem;

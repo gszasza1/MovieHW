@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieHW.Models
 {
+    //Sorozat évadához tartozó adatok
     public class SeriesCrew
     {
         public int id { get; set; }
